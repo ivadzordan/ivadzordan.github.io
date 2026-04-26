@@ -23,6 +23,10 @@
 							<div class="inner">
 								<h1>Srećan rodžordan lav!</h1>
 								<p>Moram malo da te maltretiram hihi, izvolte početi.</p>
+								<div class="return-countdown" id="returnCountdown">
+									<p class="countdown-label">Odbrojavanje do povratka (20. jun 2026, 00:00):</p>
+									<p class="countdown-value" id="countdownValue">--:--:--</p>
+								</div>
 							</div>
 						</div>
 						<nav>
@@ -141,6 +145,34 @@
 			<script src="assets/js/main.js"></script>
 			<script>
 				(function () {
+					var countdownValue = document.getElementById('countdownValue');
+					var countdownTarget = new Date(2026, 5, 20, 0, 0, 0);
+
+					function pad(value) {
+						return String(value).padStart(2, '0');
+					}
+
+					function updateCountdown() {
+						if (!countdownValue)
+							return;
+
+						var diffMs = countdownTarget.getTime() - Date.now();
+						if (diffMs <= 0) {
+							countdownValue.textContent = '00:00:00';
+							return;
+						}
+
+						var totalSeconds = Math.floor(diffMs / 1000);
+						var hours = Math.floor(totalSeconds / 3600);
+						var minutes = Math.floor((totalSeconds % 3600) / 60);
+						var seconds = totalSeconds % 60;
+
+						countdownValue.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+					}
+
+					updateCountdown();
+					window.setInterval(updateCountdown, 1000);
+
 					var loveArticle = document.getElementById('prvopitanje');
 					if (!loveArticle)
 						return;
