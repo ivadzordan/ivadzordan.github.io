@@ -1819,6 +1819,16 @@ input, select, textarea {
 		padding-top: 0.15rem;
 	}
 
+	#header .return-home-countdown {
+		margin-top: 0.9rem;
+		padding-top: 0.9rem;
+		border-top: solid 1px rgba(255, 255, 255, 0.16);
+	}
+
+	#header .return-home-countdown .voice-badge {
+		background: rgba(255, 255, 255, 0.06);
+	}
+
 	#header .voice-reveal {
 		display: -moz-flex;
 		display: -webkit-flex;

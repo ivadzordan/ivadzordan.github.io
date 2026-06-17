@@ -47,6 +47,12 @@
 											</div>
 										</div>
 									</div>
+									<div class="return-home-countdown" id="homeCountdownWrap">
+										<p class="voice-badge"><span class="icon solid fa-house"></span> Povratak kući</p>
+										<p class="countdown-label">Odbrojavanje do 20. juna 2026. u ponoć</p>
+										<p class="countdown-value" id="homeCountdownValue">--:--:--</p>
+										<p class="voice-hint">Kad i to prođe, znaš da je vreme za pakovanje i dolazak kući.</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -167,11 +173,13 @@
 			<script>
 				(function () {
 					var countdownValue = document.getElementById('countdownValue');
+						var homeCountdownValue = document.getElementById('homeCountdownValue');
 					var voiceLocked = document.getElementById('voiceLocked');
 					var voiceUnlocked = document.getElementById('voiceUnlocked');
 					var voicePlayButton = document.getElementById('voicePlayButton');
 					var voiceAudio = document.getElementById('voiceAudio');
 					var countdownTarget = new Date(2026, 5, 18, 0, 0, 0);
+						var homeCountdownTarget = new Date(2026, 5, 20, 0, 0, 0);
 					var voiceRevealShown = false;
 
 					function pad(value) {
@@ -179,10 +187,11 @@
 					}
 
 					function updateCountdown() {
-						if (!countdownValue)
+							if (!countdownValue && !homeCountdownValue)
 							return;
 
 						var diffMs = countdownTarget.getTime() - Date.now();
+							var homeDiffMs = homeCountdownTarget.getTime() - Date.now();
 						if (diffMs <= 0) {
 							countdownValue.textContent = '00:00:00';
 							if (voiceLocked)
@@ -200,7 +209,22 @@
 						var minutes = Math.floor((totalSeconds % 3600) / 60);
 						var seconds = totalSeconds % 60;
 
-						countdownValue.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+							if (countdownValue)
+								countdownValue.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+
+							if (homeCountdownValue) {
+								if (homeDiffMs <= 0) {
+									homeCountdownValue.textContent = '00:00:00';
+								}
+								else {
+									var homeTotalSeconds = Math.floor(homeDiffMs / 1000);
+									var homeHours = Math.floor(homeTotalSeconds / 3600);
+									var homeMinutes = Math.floor((homeTotalSeconds % 3600) / 60);
+									var homeSeconds = homeTotalSeconds % 60;
+									homeCountdownValue.textContent = pad(homeHours) + ':' + pad(homeMinutes) + ':' + pad(homeSeconds);
+								}
+							}
+
 						if (voiceLocked)
 							voiceLocked.hidden = false;
 						if (voiceUnlocked)
