@@ -1772,6 +1772,159 @@ input, select, textarea {
 		line-height: 1.35;
 	}
 
+	#header .return-countdown .voice-locked,
+	#header .return-countdown .voice-unlocked {
+		text-align: center;
+	}
+
+	#header .return-countdown .voice-unlocked[hidden] {
+		display: none;
+	}
+
+	#header .voice-badge {
+		display: inline-flex;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: center;
+		margin: 0 0 0.55rem 0;
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.08);
+		border: solid 1px rgba(255, 255, 255, 0.18);
+		font-size: 0.62rem;
+		letter-spacing: 0.16rem;
+		text-transform: uppercase;
+		line-height: 1.4;
+	}
+
+	#header .voice-badge .icon {
+		font-size: 0.8rem;
+	}
+
+	#header .voice-badge-open {
+		background: rgba(157, 255, 191, 0.1);
+		border-color: rgba(157, 255, 191, 0.28);
+	}
+
+	#header .voice-hint {
+		margin: 0.6rem 0 0 0;
+		font-size: 0.68rem;
+		letter-spacing: 0.1rem;
+		line-height: 1.7;
+		text-transform: uppercase;
+		opacity: 0.78;
+	}
+
+	#header .voice-unlocked {
+		padding-top: 0.15rem;
+	}
+
+	#header .voice-reveal {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		gap: 0.95rem;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		margin-top: 0.6rem;
+		text-align: left;
+	}
+
+	#header .voice-art {
+		-moz-flex: 0 0 4.5rem;
+		-webkit-flex: 0 0 4.5rem;
+		-ms-flex: 0 0 4.5rem;
+		flex: 0 0 4.5rem;
+		height: 4.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 56%, rgba(0, 0, 0, 0.1) 100%);
+		border: solid 1px rgba(255, 255, 255, 0.16);
+		box-shadow: 0 0 0 0 rgba(157, 255, 191, 0.22);
+	}
+
+		#header .voice-art .icon {
+			font-size: 1.5rem;
+			opacity: 0.95;
+		}
+
+	#header .voice-copy-block {
+		-moz-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+
+	#header .voice-title {
+		margin: 0;
+		font-size: 0.84rem;
+		letter-spacing: 0.16rem;
+		text-transform: uppercase;
+		line-height: 1.55;
+	}
+
+	#header .voice-controls {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-top: 0.8rem;
+	}
+
+	#header .voice-play {
+		min-width: 10rem;
+	}
+
+	#header .voice-fallback {
+		margin: 0.7rem 0 0 0;
+		font-size: 0.62rem;
+		letter-spacing: 0.12rem;
+		text-transform: uppercase;
+		line-height: 1.7;
+		opacity: 0.7;
+	}
+
+	#header .voice-unlocked.is-visible .voice-art {
+		animation: voice-art-pulse 1.85s ease-in-out infinite;
+	}
+
+	@media screen and (max-width: 736px) {
+
+		#header .voice-reveal {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		#header .voice-controls {
+			justify-content: center;
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		#header .voice-play {
+			width: 100%;
+		}
+
+	}
+
+	@keyframes voice-art-pulse {
+
+		0%, 100% {
+			transform: scale(1);
+			box-shadow: 0 0 0 0 rgba(157, 255, 191, 0.18);
+		}
+
+		50% {
+			transform: scale(1.04);
+			box-shadow: 0 0 0 0.65rem rgba(157, 255, 191, 0);
+		}
+
+	}
+
 		#prvopitanje .love-result[hidden] {
 			display: none;
 		}
