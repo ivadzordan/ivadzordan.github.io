@@ -1872,6 +1872,8 @@ input, select, textarea {
 
 	#header .voice-player-mark .icon {
 		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.95);
+		text-shadow: 0 0 10px rgba(255, 255, 255, 0.22);
 	}
 
 	#header .voice-player-copy {
