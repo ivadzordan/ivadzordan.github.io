@@ -216,12 +216,11 @@
 
 							if (countdownValue)
 								countdownValue.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+							if (voiceLocked)
+								voiceLocked.hidden = false;
+							if (voiceUnlocked)
+								voiceUnlocked.hidden = true;
 							}
-
-						if (voiceLocked)
-							voiceLocked.hidden = false;
-						if (voiceUnlocked)
-							voiceUnlocked.hidden = true;
 					}
 
 					updateCountdown();
