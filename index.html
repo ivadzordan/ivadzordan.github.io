@@ -187,34 +187,35 @@
 
 						var diffMs = countdownTarget.getTime() - Date.now();
 							var homeDiffMs = homeCountdownTarget.getTime() - Date.now();
+
+						if (homeCountdownValue) {
+							if (homeDiffMs <= 0) {
+								homeCountdownValue.textContent = '00:00:00';
+							}
+							else {
+								var homeTotalSeconds = Math.floor(homeDiffMs / 1000);
+								var homeHours = Math.floor(homeTotalSeconds / 3600);
+								var homeMinutes = Math.floor((homeTotalSeconds % 3600) / 60);
+								var homeSeconds = homeTotalSeconds % 60;
+								homeCountdownValue.textContent = pad(homeHours) + ':' + pad(homeMinutes) + ':' + pad(homeSeconds);
+							}
+						}
+
 						if (diffMs <= 0) {
 							countdownValue.textContent = '00:00:00';
 							if (voiceLocked)
 								voiceLocked.hidden = true;
 							if (voiceUnlocked)
 								voiceUnlocked.hidden = false;
-							return;
 						}
-
-						var totalSeconds = Math.floor(diffMs / 1000);
-						var hours = Math.floor(totalSeconds / 3600);
-						var minutes = Math.floor((totalSeconds % 3600) / 60);
-						var seconds = totalSeconds % 60;
+						else {
+							var totalSeconds = Math.floor(diffMs / 1000);
+							var hours = Math.floor(totalSeconds / 3600);
+							var minutes = Math.floor((totalSeconds % 3600) / 60);
+							var seconds = totalSeconds % 60;
 
 							if (countdownValue)
 								countdownValue.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
-
-							if (homeCountdownValue) {
-								if (homeDiffMs <= 0) {
-									homeCountdownValue.textContent = '00:00:00';
-								}
-								else {
-									var homeTotalSeconds = Math.floor(homeDiffMs / 1000);
-									var homeHours = Math.floor(homeTotalSeconds / 3600);
-									var homeMinutes = Math.floor((homeTotalSeconds % 3600) / 60);
-									var homeSeconds = homeTotalSeconds % 60;
-									homeCountdownValue.textContent = pad(homeHours) + ':' + pad(homeMinutes) + ':' + pad(homeSeconds);
-								}
 							}
 
 						if (voiceLocked)
