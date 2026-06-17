@@ -28,24 +28,12 @@
 										<p class="voice-badge"><span class="icon solid fa-lock"></span> Zapečaćena glasovna</p>
 										<p class="countdown-label">Otvara se 18. juna 2026. u ponoć</p>
 										<p class="countdown-value" id="countdownValue">--:--:--</p>
-										<p class="voice-hint">Do tada stoji zaključana.</p>
+										<p class="voice-hint">Nemoš da me sušaš još.</p>
 									</div>
 									<div class="voice-unlocked" id="voiceUnlocked" hidden>
 										<p class="voice-badge voice-badge-open"><span class="icon solid fa-envelope-open-text"></span> Otključano</p>
-										<div class="voice-reveal">
-											<div class="voice-art">
-												<span class="icon solid fa-compact-disc"></span>
-											</div>
-											<div class="voice-copy-block">
-												<p class="voice-title">Da me sušaš malo</p>
-												<p class="voice-hint">.</p>
-												<div class="voice-controls">
-													<button type="button" class="button primary voice-play" id="voicePlayButton">Ljubavi sušaj</button>
-													<audio id="voiceAudio" preload="metadata" src="images/glasovna.mp3"></audio>
-												</div>
-												<p class="voice-fallback">Nešto sam sjebo.</p>
-											</div>
-										</div>
+										<p class="voice-title">Čekaj samo da ti se čkode dogega do laptopa.</p>
+										<p class="voice-hint">Kad istekne vreme, ovde se pojavi poruka, a audio pristup više ne mora da se koristi.</p>
 									</div>
 									<div class="return-home-countdown" id="homeCountdownWrap">
 										<p class="voice-badge"><span class="icon solid fa-house"></span> Povratak kući</p>
@@ -176,11 +164,8 @@
 						var homeCountdownValue = document.getElementById('homeCountdownValue');
 					var voiceLocked = document.getElementById('voiceLocked');
 					var voiceUnlocked = document.getElementById('voiceUnlocked');
-					var voicePlayButton = document.getElementById('voicePlayButton');
-					var voiceAudio = document.getElementById('voiceAudio');
 					var countdownTarget = new Date(2026, 5, 18, 0, 0, 0);
 						var homeCountdownTarget = new Date(2026, 5, 20, 0, 0, 0);
-					var voiceRevealShown = false;
 
 					function pad(value) {
 						return String(value).padStart(2, '0');
@@ -198,9 +183,6 @@
 								voiceLocked.hidden = true;
 							if (voiceUnlocked)
 								voiceUnlocked.hidden = false;
-							if (!voiceRevealShown && voiceUnlocked)
-								voiceUnlocked.classList.add('is-visible');
-							voiceRevealShown = true;
 							return;
 						}
 
@@ -229,24 +211,6 @@
 							voiceLocked.hidden = false;
 						if (voiceUnlocked)
 							voiceUnlocked.hidden = true;
-						voiceRevealShown = false;
-					}
-
-					if (voicePlayButton && voiceAudio) {
-						voicePlayButton.addEventListener('click', function () {
-							if (voiceAudio.paused) {
-								voiceAudio.play().catch(function () {});
-								voicePlayButton.textContent = 'Pauziraj';
-							}
-							else {
-								voiceAudio.pause();
-								voicePlayButton.textContent = 'Pusti poruku';
-							}
-						});
-
-						voiceAudio.addEventListener('ended', function () {
-							voicePlayButton.textContent = 'Pusti poruku';
-						});
 					}
 
 					updateCountdown();
