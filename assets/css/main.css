@@ -37,6 +37,18 @@
 		opacity: 0.92;
 	}
 
+	#header .celebration-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+
+	#header .celebration-link {
+		min-width: 12rem;
+	}
+
 	#header .celebration-confetti {
 		display: flex;
 		justify-content: center;
