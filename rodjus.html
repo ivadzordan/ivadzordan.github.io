@@ -51,6 +51,14 @@
 										<p class="countdown-value" id="homeCountdownValue">--:--:--</p>
 										<p class="voice-hint">Stižem ti lavvvv</p>
 									</div>
+									<div class="return-celebration" id="returnCelebration" hidden>
+										<p class="celebration-badge">🎉 GOTOVO</p>
+										<p class="celebration-title">Vracam ti se poz.</p>
+										<p class="celebration-copy">Fala na strpljenju, volim te puno</p>
+										<div class="celebration-confetti" aria-hidden="true">
+											<span>✨</span><span>🎊</span><span>🎉</span><span>✨</span><span>🎊</span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -174,6 +182,8 @@
 						var homeCountdownValue = document.getElementById('homeCountdownValue');
 					var voiceLocked = document.getElementById('voiceLocked');
 					var voiceUnlocked = document.getElementById('voiceUnlocked');
+					var homeCountdownWrap = document.getElementById('homeCountdownWrap');
+					var returnCelebration = document.getElementById('returnCelebration');
 					var countdownTarget = new Date(2026, 5, 18, 0, 0, 0);
 						var homeCountdownTarget = new Date(2026, 5, 20, 0, 0, 0);
 
@@ -191,6 +201,10 @@
 						if (homeCountdownValue) {
 							if (homeDiffMs <= 0) {
 								homeCountdownValue.textContent = '00:00:00';
+								if (homeCountdownWrap)
+									homeCountdownWrap.hidden = true;
+								if (returnCelebration)
+									returnCelebration.hidden = false;
 							}
 							else {
 								var homeTotalSeconds = Math.floor(homeDiffMs / 1000);
@@ -198,6 +212,10 @@
 								var homeMinutes = Math.floor((homeTotalSeconds % 3600) / 60);
 								var homeSeconds = homeTotalSeconds % 60;
 								homeCountdownValue.textContent = pad(homeHours) + ':' + pad(homeMinutes) + ':' + pad(homeSeconds);
+								if (homeCountdownWrap)
+									homeCountdownWrap.hidden = false;
+								if (returnCelebration)
+									returnCelebration.hidden = true;
 							}
 						}
 
