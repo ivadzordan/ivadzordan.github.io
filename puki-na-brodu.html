@@ -1,23 +1,71 @@
+<!-- beži bre ne čitaj skloni se -->
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Puki na brodu</title>
+		<title>PUKI NA BRODU</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="icon" type="image/webp" href="images/puki.webp" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
+			:root {
+				--boja-1: #ff8a65;
+				--boja-2: #ffd54f;
+				--boja-3: #4dd0e1;
+				--boja-4: #f06292;
+				--staklo: rgba(255, 255, 255, 0.08);
+			}
+
+			#header .content .inner {
+				background: linear-gradient(145deg, rgba(255, 138, 101, 0.16), rgba(77, 208, 225, 0.1));
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 0.8rem;
+				padding: 1.35rem;
+			}
+
+			.osmeh-red {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 0.8rem;
+				margin-top: 0.9rem;
+				font-size: 1.2rem;
+			}
+
+			.ukras-slika {
+				width: 52px;
+				height: 52px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 2px solid rgba(255, 255, 255, 0.75);
+				box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+			}
+
 			.brod-kutija {
 				display: grid;
 				gap: 1.25rem;
 			}
 
 			.brod-kartica {
-				border: 1px solid rgba(255, 255, 255, 0.2);
+				border: 1px solid rgba(255, 255, 255, 0.25);
 				border-radius: 0.5rem;
 				padding: 1rem 1.1rem;
-				background: rgba(255, 255, 255, 0.04);
+				background: linear-gradient(135deg, var(--staklo), rgba(255, 255, 255, 0.02));
+				backdrop-filter: blur(6px);
+				cursor: pointer;
+				transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+			}
+
+			.brod-kartica:hover {
+				transform: translateY(-2px);
+				border-color: rgba(255, 213, 79, 0.75);
+				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+			}
+
+			.brod-kartica:focus-visible {
+				outline: 2px solid var(--boja-2);
+				outline-offset: 2px;
 			}
 
 			.brod-oznaka {
@@ -47,6 +95,71 @@
 			.brod-kartica p {
 				margin: 0;
 				line-height: 1.75;
+			}
+
+			.poruka-zaglavlje {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 0.8rem;
+			}
+
+			.poruka-emodzi {
+				font-size: 1.25rem;
+			}
+
+			.poruka-hint {
+				display: block;
+				margin-top: 0.4rem;
+				font-size: 0.8rem;
+				opacity: 0.8;
+			}
+
+			.poruka-strelica {
+				font-size: 1.1rem;
+				opacity: 0.9;
+				transition: transform 220ms ease;
+			}
+
+			.brod-kartica.otvorena .poruka-strelica {
+				transform: rotate(180deg);
+			}
+
+			.poruka-sadrzaj {
+				max-height: 0;
+				overflow: hidden;
+				opacity: 0;
+				transform: translateY(-5px);
+				transition: max-height 360ms ease, opacity 280ms ease, transform 280ms ease, margin-top 280ms ease;
+				margin-top: 0;
+			}
+
+			.brod-kartica.otvorena .poruka-sadrzaj {
+				max-height: 420px;
+				opacity: 1;
+				transform: translateY(0);
+				margin-top: 0.65rem;
+			}
+
+			.slika-poruke {
+				width: 100%;
+				max-width: 320px;
+				display: block;
+				margin-top: 0.7rem;
+				border-radius: 0.6rem;
+				border: 1px solid rgba(255, 255, 255, 0.35);
+			}
+
+			.brod-kartica.zakljucano-tresenje {
+				animation: tresni 360ms ease;
+			}
+
+			@keyframes tresni {
+				0% { transform: translateX(0); }
+				25% { transform: translateX(-5px); }
+				50% { transform: translateX(5px); }
+				75% { transform: translateX(-3px); }
+				100% { transform: translateX(0); }
 			}
 
 			.brod-odbrojavanje {
@@ -79,6 +192,11 @@
 				.brod-odbrojavanje {
 					font-size: 1.2rem;
 				}
+
+				.ukras-slika {
+					width: 42px;
+					height: 42px;
+				}
 			}
 		</style>
 	</head>
@@ -93,6 +211,13 @@
 					<div class="inner">
 						<h1>Puki je na brodu.</h1>
 						<p>Otišo da pere ruke i gasi požare.</p>
+						<div class="osmeh-red" aria-hidden="true">
+							<span>🌊</span>
+							<img class="ukras-slika" src="images/ljub.webp" alt="" />
+							<span>💙</span>
+							<img class="ukras-slika" src="images/grl.webp" alt="" />
+							<span>🛳️</span>
+						</div>
 						<p class="brod-odbrojavanje" id="odbrojavanjeSati">Odbrojavanje</p>
 						<p class="brod-podtekst" id="odbrojavanjeOpis">Puki povratak dan trijes prvi oktobar.</p>
 					</div>
@@ -108,23 +233,34 @@
 				<article id="poruke">
 					<h2 class="major">Otvori kad...</h2>
 					<div class="brod-kutija">
-						<section class="brod-kartica">
+						<section class="brod-kartica poruka-kartica" id="karticaUvekTu" data-zakljucana="ne" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajUvekTu">
 							<p class="brod-oznaka otkljucano"><span class="icon solid fa-envelope-open-text"></span> Otključano</p>
-							<h3>Otvori kad ti baš falim</h3>
-							<p>
-								A bre stenčugo... <br />
-                                Nemo pačeš, mnogo te vojim i nedostaješ mi. <br />
-                                Brzo se vraćam nećeš ni osetiti. <br />
-							</p>
+							<div class="poruka-zaglavlje">
+								<h3>Otvori kad ti baš falim</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">💌</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajUvekTu">
+								<p>
+									A bre stenčugo...<br />
+									Nemo pačeš, mnogo te vojim i nedostaješ mi.<br />
+									Brzo se vraćam, nećeš ni osetiti. 🤍
+								</p>
+								<img class="slika-poruke" src="images/ljub.webp" alt="Puki i ti dok se ljubite" />
+							</div>
 						</section>
 
-						<section class="brod-kartica" id="rucnaPorukaKartica">
+						<section class="brod-kartica poruka-kartica" id="rucnaPorukaKartica" data-zakljucana="da" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajRucnePoruke">
 							<p class="brod-oznaka zakljucano" id="rucnaPorukaOznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
-							<h3 id="rucnaPorukaNaslov">Otvori kad Puki otključa</h3>
-							<p id="rucnaPorukaTekst">
-								Nemož da vidiš još sačkaj malo.
-								Puki će je otključati kad bude vreme (kad stigne).
-							</p>
+							<div class="poruka-zaglavlje">
+								<h3 id="rucnaPorukaNaslov">Otvori kad Puki otključa</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
+							</div>
+							<span class="poruka-hint" id="rucnaPorukaHint"><span class="poruka-emodzi" aria-hidden="true">🔒</span> Još je zaključano, klik može samo da proba.</span>
+							<div class="poruka-sadrzaj" id="sadrzajRucnePoruke">
+								<p id="rucnaPorukaTekst">Nema poruke još.</p>
+								<img class="slika-poruke" src="images/grl.webp" alt="Puki i ti dok se grlite" />
+							</div>
 							<span class="napomena-azuriranje">Nema poruke bjež.</span>
 						</section>
 					</div>
@@ -132,7 +268,7 @@
 			</div>
 
 			<footer id="footer">
-				<p class="copyright">Puki je na brodu.</p>
+				<p class="copyright">vojim te</p>
 			</footer>
 		</div>
 
@@ -157,6 +293,8 @@
 				var rucnaPorukaOznakaEl = document.getElementById('rucnaPorukaOznaka');
 				var rucnaPorukaNaslovEl = document.getElementById('rucnaPorukaNaslov');
 				var rucnaPorukaTekstEl = document.getElementById('rucnaPorukaTekst');
+				var rucnaPorukaKarticaEl = document.getElementById('rucnaPorukaKartica');
+				var rucnaPorukaHintEl = document.getElementById('rucnaPorukaHint');
 
 				function dopuniNulom(vrednost) {
 					return String(vrednost).padStart(2, '0');
@@ -193,10 +331,46 @@
 						rucnaPorukaOznakaEl.innerHTML = '<span class="icon solid fa-envelope-open-text"></span> Otkljucano';
 						rucnaPorukaNaslovEl.textContent = RUCNA_PORUKA.naslov || 'Nova poruka od Pukija';
 						rucnaPorukaTekstEl.textContent = RUCNA_PORUKA.tekst || 'Čekaj nisam stigo da napišemmm.';
+						if (rucnaPorukaKarticaEl)
+							rucnaPorukaKarticaEl.setAttribute('data-zakljucana', 'ne');
+						if (rucnaPorukaHintEl)
+							rucnaPorukaHintEl.innerHTML = '<span class="poruka-emodzi" aria-hidden="true">✨</span> Klikni karticu da otvoriš poruku.';
+					}
+				}
+
+				function promeniOtvorenostKartice(karticaEl) {
+					var jeZakljucana = karticaEl.getAttribute('data-zakljucana') === 'da';
+					if (jeZakljucana) {
+						karticaEl.classList.remove('zakljucano-tresenje');
+						void karticaEl.offsetWidth;
+						karticaEl.classList.add('zakljucano-tresenje');
+						if (rucnaPorukaHintEl)
+							rucnaPorukaHintEl.innerHTML = '<span class="poruka-emodzi" aria-hidden="true">🔐</span> Još malo strpljenja, Puki će otključati kada dođe trenutak.';
+						return;
+					}
+
+					var sadaOtvorena = karticaEl.classList.toggle('otvorena');
+					karticaEl.setAttribute('aria-expanded', sadaOtvorena ? 'true' : 'false');
+				}
+
+				function poveziKarticeNaKlik() {
+					var kartice = document.querySelectorAll('.poruka-kartica');
+					for (var i = 0; i < kartice.length; i++) {
+						kartice[i].addEventListener('click', function () {
+							promeniOtvorenostKartice(this);
+						});
+
+						kartice[i].addEventListener('keydown', function (event) {
+							if (event.key === 'Enter' || event.key === ' ') {
+								event.preventDefault();
+								promeniOtvorenostKartice(this);
+							}
+						});
 					}
 				}
 
 				prikaziRucnuPoruku();
+				poveziKarticeNaKlik();
 				azurirajOdbrojavanje();
 				window.setInterval(azurirajOdbrojavanje, 1000);
 			})();
