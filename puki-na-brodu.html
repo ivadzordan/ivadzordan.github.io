@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Puki na brodu</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/webp" href="images/puki.webp" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.brod-kutija {
+				display: grid;
+				gap: 1.25rem;
+			}
+
+			.brod-kartica {
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 0.5rem;
+				padding: 1rem 1.1rem;
+				background: rgba(255, 255, 255, 0.04);
+			}
+
+			.brod-oznaka {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.45rem;
+				font-size: 0.75rem;
+				letter-spacing: 0.16rem;
+				text-transform: uppercase;
+				opacity: 0.86;
+			}
+
+			.brod-oznaka.otkljucano {
+				color: #8bffb4;
+			}
+
+			.brod-oznaka.zakljucano {
+				color: #ffd88a;
+			}
+
+			.brod-kartica h3 {
+				margin: 0.65rem 0 0.5rem;
+				font-size: 1rem;
+				letter-spacing: 0.05rem;
+			}
+
+			.brod-kartica p {
+				margin: 0;
+				line-height: 1.75;
+			}
+
+			.brod-odbrojavanje {
+				font-size: 1.5rem;
+				font-weight: 700;
+				letter-spacing: 0.08rem;
+				line-height: 1.2;
+				word-break: break-word;
+			}
+
+			.brod-podtekst {
+				opacity: 0.84;
+				margin-top: 0.35rem;
+				font-size: 0.92rem;
+			}
+
+			.napomena-azuriranje {
+				display: block;
+				margin-top: 0.75rem;
+				font-size: 0.78rem;
+				opacity: 0.65;
+			}
+
+			.vracen-status {
+				color: #8bffb4;
+				font-weight: 700;
+			}
+
+			@media screen and (max-width: 736px) {
+				.brod-odbrojavanje {
+					font-size: 1.2rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper">
+			<header id="header">
+				<div class="logo">
+					<span class="icon solid fa-ship"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Puki je na brodu.</h1>
+						<p>Otišo da pere ruke i gasi požare.</p>
+						<p class="brod-odbrojavanje" id="odbrojavanjeSati">Odbrojavanje</p>
+						<p class="brod-podtekst" id="odbrojavanjeOpis">Puki povratak dan trijes prvi oktobar.</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#poruke">Klikni mu ga</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div id="main">
+				<article id="poruke">
+					<h2 class="major">Otvori kad...</h2>
+					<div class="brod-kutija">
+						<section class="brod-kartica">
+							<p class="brod-oznaka otkljucano"><span class="icon solid fa-envelope-open-text"></span> Otključano</p>
+							<h3>Otvori kad ti baš falim</h3>
+							<p>
+								A bre stenčugo... <br />
+                                Nemo pačeš, mnogo te vojim i nedostaješ mi. <br />
+                                Brzo se vraćam nećeš ni osetiti. <br />
+							</p>
+						</section>
+
+						<section class="brod-kartica" id="rucnaPorukaKartica">
+							<p class="brod-oznaka zakljucano" id="rucnaPorukaOznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<h3 id="rucnaPorukaNaslov">Otvori kad Puki otključa</h3>
+							<p id="rucnaPorukaTekst">
+								Nemož da vidiš još sačkaj malo.
+								Puki će je otključati kad bude vreme (kad stigne).
+							</p>
+							<span class="napomena-azuriranje">Nema poruke bjež.</span>
+						</section>
+					</div>
+				</article>
+			</div>
+
+			<footer id="footer">
+				<p class="copyright">Puki je na brodu.</p>
+			</footer>
+		</div>
+
+		<div id="bg"></div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			(function () {
+				var povratakU = new Date('2026-10-31T23:00:00+01:00');
+				var odbrojavanjeSatiEl = document.getElementById('odbrojavanjeSati');
+				var odbrojavanjeOpisEl = document.getElementById('odbrojavanjeOpis');
+
+				
+				var RUCNA_PORUKA = {
+					otkljucana: false
+				};
+
+				var rucnaPorukaOznakaEl = document.getElementById('rucnaPorukaOznaka');
+				var rucnaPorukaNaslovEl = document.getElementById('rucnaPorukaNaslov');
+				var rucnaPorukaTekstEl = document.getElementById('rucnaPorukaTekst');
+
+				function dopuniNulom(vrednost) {
+					return String(vrednost).padStart(2, '0');
+				}
+
+				function azurirajOdbrojavanje() {
+					if (!odbrojavanjeSatiEl || !odbrojavanjeOpisEl)
+						return;
+
+					var razlikaMs = povratakU.getTime() - Date.now();
+
+					if (razlikaMs <= 0) {
+						odbrojavanjeSatiEl.textContent = 'Do Pukija: 0h 00m 00s';
+						odbrojavanjeOpisEl.textContent = '';
+						return;
+					}
+
+					var ukupnoSekundi = Math.floor(razlikaMs / 1000);
+					var ukupnoSati = Math.floor(ukupnoSekundi / 3600);
+					var minuti = Math.floor((ukupnoSekundi % 3600) / 60);
+					var sekunde = ukupnoSekundi % 60;
+
+					odbrojavanjeSatiEl.textContent = 'Do Pukija: ' + ukupnoSati + 'h ' + dopuniNulom(minuti) + 'm ' + dopuniNulom(sekunde) + 's';
+					odbrojavanjeOpisEl.textContent = 'Povratak planiran 31. oktobra predveče (okvirno 23:00).';
+				}
+
+				function prikaziRucnuPoruku() {
+					if (!rucnaPorukaOznakaEl || !rucnaPorukaNaslovEl || !rucnaPorukaTekstEl)
+						return;
+
+					if (RUCNA_PORUKA.otkljucana) {
+						rucnaPorukaOznakaEl.classList.remove('zakljucano');
+						rucnaPorukaOznakaEl.classList.add('otkljucano');
+						rucnaPorukaOznakaEl.innerHTML = '<span class="icon solid fa-envelope-open-text"></span> Otkljucano';
+						rucnaPorukaNaslovEl.textContent = RUCNA_PORUKA.naslov || 'Nova poruka od Pukija';
+						rucnaPorukaTekstEl.textContent = RUCNA_PORUKA.tekst || 'Čekaj nisam stigo da napišemmm.';
+					}
+				}
+
+				prikaziRucnuPoruku();
+				azurirajOdbrojavanje();
+				window.setInterval(azurirajOdbrojavanje, 1000);
+			})();
+		</script>
+
+	</body>
+</html>
