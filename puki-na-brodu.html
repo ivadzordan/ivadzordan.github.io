@@ -42,6 +42,23 @@
 				box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
 			}
 
+			.puki-glavna-slika-okvir {
+				margin: 1rem auto 0;
+				width: min(320px, 88%);
+				padding: 0.35rem;
+				border-radius: 1rem;
+				background: linear-gradient(140deg, var(--boja-1), var(--boja-2), var(--boja-4));
+				box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+			}
+
+			.puki-glavna-slika {
+				display: block;
+				width: 100%;
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+				border-radius: 0.8rem;
+			}
+
 			.brod-kutija {
 				display: grid;
 				gap: 1.25rem;
@@ -197,6 +214,10 @@
 					width: 42px;
 					height: 42px;
 				}
+
+				.puki-glavna-slika-okvir {
+					width: min(250px, 92%);
+				}
 			}
 		</style>
 	</head>
@@ -211,12 +232,15 @@
 					<div class="inner">
 						<h1>Puki je na brodu.</h1>
 						<p>Otišo da pere ruke i gasi požare.</p>
+						<div class="puki-glavna-slika-okvir">
+							<img class="puki-glavna-slika" src="images/puki.webp" alt="Puki na početnoj" />
+						</div>
 						<div class="osmeh-red" aria-hidden="true">
 							<span>🌊</span>
 							<img class="ukras-slika" src="images/ljub.webp" alt="" />
-							<span>💙</span>
+							<span>🟪</span>
 							<img class="ukras-slika" src="images/grl.webp" alt="" />
-							<span>🛳️</span>
+							<span>♥️</span>
 						</div>
 						<p class="brod-odbrojavanje" id="odbrojavanjeSati">Odbrojavanje</p>
 						<p class="brod-podtekst" id="odbrojavanjeOpis">Puki povratak dan trijes prvi oktobar.</p>
@@ -244,7 +268,7 @@
 								<p>
 									A bre stenčugo...<br />
 									Nemo pačeš, mnogo te vojim i nedostaješ mi.<br />
-									Brzo se vraćam, nećeš ni osetiti. 🤍
+									Brzo se vraćam, nećeš ni osetiti. 🟪 
 								</p>
 								<img class="slika-poruke" src="images/ljub.webp" alt="Puki i ti dok se ljubite" />
 							</div>
@@ -256,7 +280,8 @@
 								<h3 id="rucnaPorukaNaslov">Otvori kad Puki otključa</h3>
 								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint" id="rucnaPorukaHint"><span class="poruka-emodzi" aria-hidden="true">🔒</span> Još je zaključano, klik može samo da proba.</span>
+							<span class="poruka-hint" id="rucnaPorukaHint"><span class="poruka-emodzi" aria-hidden="true">🔒</span> Nemož da vidiš još sačkaj malo.
+								Puki će je otključati kad bude vreme (kad stigne)..</span>
 							<div class="poruka-sadrzaj" id="sadrzajRucnePoruke">
 								<p id="rucnaPorukaTekst">Nema poruke još.</p>
 								<img class="slika-poruke" src="images/grl.webp" alt="Puki i ti dok se grlite" />
@@ -268,7 +293,7 @@
 			</div>
 
 			<footer id="footer">
-				<p class="copyright">vojim te</p>
+				<p class="copyright">vojim te 🟪 ♥️</p>
 			</footer>
 		</div>
 
