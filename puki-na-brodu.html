@@ -64,6 +64,158 @@
 				gap: 1.25rem;
 			}
 
+			.pretraga-kutija {
+				margin-bottom: 1.5rem;
+				padding: 1rem 1rem 0.9rem;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 0.8rem;
+				background: linear-gradient(135deg, rgba(255, 138, 101, 0.14), rgba(77, 208, 225, 0.08));
+				box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+			}
+
+			.pretraga-label {
+				display: block;
+				margin-bottom: 0.65rem;
+				font-size: 0.82rem;
+				letter-spacing: 0.14rem;
+				text-transform: uppercase;
+				opacity: 0.9;
+			}
+
+			.pretraga-okvir {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				padding: 0.8rem 0.9rem;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				transition: border-color 180ms ease, box-shadow 180ms ease;
+			}
+
+			.pretraga-okvir:focus-within {
+				border-color: rgba(255, 213, 79, 0.9);
+				box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.12);
+			}
+
+			.pretraga-okvir input {
+				width: 100%;
+				background: transparent;
+				border: none;
+				color: #fff;
+				font: inherit;
+				padding: 0;
+				outline: none;
+			}
+
+			.pretraga-okvir input::placeholder {
+				color: rgba(255,255,255,0.6);
+			}
+
+			.pretraga-ikona {
+				font-size: 1.15rem;
+			}
+
+			.pretraga-tagovi {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-top: 0.8rem;
+			}
+
+			.pretraga-tag {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 2.35rem;
+				padding: 0.42rem 0.72rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255,255,255,0.18);
+				background: rgba(255,255,255,0.04);
+				color: #fff;
+				font-size: 0.72rem;
+				letter-spacing: 0.03rem;
+				cursor: pointer;
+				transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+			}
+
+			.pretraga-tag:hover {
+				transform: translateY(-1px);
+				background: rgba(255, 213, 79, 0.08);
+				border-color: rgba(255, 213, 79, 0.75);
+			}
+
+			.pretraga-tag.izabrano {
+				background: linear-gradient(135deg, var(--boja-1), var(--boja-4));
+				border-color: transparent;
+				box-shadow: 0 8px 18px rgba(240, 98, 146, 0.22);
+			}
+
+			.brod-kartica.zakljucana {
+				border-color: rgba(255, 216, 138, 0.38);
+			}
+
+			.brod-kartica.zakljucana-tresenje {
+				animation: tresni 360ms ease;
+			}
+
+			@keyframes tresni {
+				0% { transform: translateX(0); }
+				25% { transform: translateX(-5px); }
+				50% { transform: translateX(5px); }
+				75% { transform: translateX(-3px); }
+				100% { transform: translateX(0); }
+			}
+
+			.pretraga-odgovor {
+				display: none;
+				margin-top: 0.9rem;
+				padding: 0.9rem 1rem;
+				border-left: 3px solid var(--boja-2);
+				border-radius: 0.6rem;
+				background: rgba(255,255,255,0.04);
+				animation: poruka-uzdah 440ms ease;
+			}
+
+			.pretraga-odgovor.otvoreno {
+				display: block;
+			}
+
+			.pretraga-odgovor strong {
+				color: #ffd54f;
+			}
+
+			@keyframes poruka-uzdah {
+				0% { opacity: 0; transform: translateY(8px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			.stranice-tabovi {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.55rem;
+				margin: 0.3rem 0 1.15rem;
+			}
+
+			.stranica-dugme {
+				padding: 0.5rem 0.85rem;
+				border-radius: 999px;
+				border: 1px solid rgba(255,255,255,0.18);
+				background: rgba(255,255,255,0.04);
+				color: #fff;
+				font-size: 0.72rem;
+				letter-spacing: 0.04rem;
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: all 180ms ease;
+			}
+
+			.stranica-dugme.aktivan {
+				background: linear-gradient(135deg, var(--boja-1), var(--boja-4));
+				border-color: transparent;
+				box-shadow: 0 10px 22px rgba(240, 98, 146, 0.25);
+			}
+
 			.brod-kartica {
 				border: 1px solid rgba(255, 255, 255, 0.25);
 				border-radius: 0.5rem;
@@ -93,14 +245,6 @@
 				letter-spacing: 0.16rem;
 				text-transform: uppercase;
 				opacity: 0.86;
-			}
-
-			.brod-oznaka.otkljucano {
-				color: #8bffb4;
-			}
-
-			.brod-oznaka.zakljucano {
-				color: #ffd88a;
 			}
 
 			.brod-kartica h3 {
@@ -165,18 +309,6 @@
 				margin-top: 0.7rem;
 				border-radius: 0.6rem;
 				border: 1px solid rgba(255, 255, 255, 0.35);
-			}
-
-			.brod-kartica.zakljucano-tresenje {
-				animation: tresni 360ms ease;
-			}
-
-			@keyframes tresni {
-				0% { transform: translateX(0); }
-				25% { transform: translateX(-5px); }
-				50% { transform: translateX(5px); }
-				75% { transform: translateX(-3px); }
-				100% { transform: translateX(0); }
 			}
 
 			.brod-odbrojavanje {
@@ -256,9 +388,22 @@
 			<div id="main">
 				<article id="poruke">
 					<h2 class="major">Otvori kad...</h2>
+						<div class="pretraga-kutija">
+							<p class="pretraga-label">Kako se danas osećate gospođice lav?</p>
+							<div class="pretraga-tagovi" aria-label="Osećanja i potrebe">
+								<button class="pretraga-tag" type="button" data-tag="teško">🌧️ Teško mi je</button>
+								<button class="pretraga-tag" type="button" data-tag="nedostaje">💌 Nedostaješ mi</button>
+								<button class="pretraga-tag" type="button" data-tag="umorna">😴 Umorna sam</button>
+								<button class="pretraga-tag" type="button" data-tag="tužna">🌧️ Tužna sam</button>
+								<button class="pretraga-tag" type="button" data-tag="sama">🫂 Trebaš mi</button>
+								<button class="pretraga-tag" type="button" data-tag="sreća">☀️ Srećna sam</button>
+								<button class="pretraga-tag" type="button" data-tag="mir">🫧 Treba mi mir</button>
+							</div>
+						</div>
+
 					<div class="brod-kutija">
-						<section class="brod-kartica poruka-kartica" id="karticaUvekTu" data-zakljucana="ne" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajUvekTu">
-							<p class="brod-oznaka otkljucano"><span class="icon solid fa-envelope-open-text"></span> Otključano</p>
+							<section class="brod-kartica poruka-kartica" id="karticaUvekTu" data-kategorija="bliskost" data-emocije="nedostaje" data-tags="nedostaje ljubav bliskost volim te topao" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajUvekTu">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
 								<h3>Otvori kad ti baš falim</h3>
 								<span class="poruka-strelica" aria-hidden="true">▼</span>
@@ -270,23 +415,72 @@
 									Nemo pačeš, mnogo te vojim i nedostaješ mi.<br />
 									Brzo se vraćam, nećeš ni osetiti. 🟪 
 								</p>
-								<img class="slika-poruke" src="images/ljub.webp" alt="Puki i ti dok se ljubite" />
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.20.jpeg" alt="Puki i ti u bliskom trenutku" />
 							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica" id="rucnaPorukaKartica" data-zakljucana="da" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajRucnePoruke">
-							<p class="brod-oznaka zakljucano" id="rucnaPorukaOznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" id="karticaPet" data-kategorija="teško" data-emocije="teško" data-tags="teško tuga nevolja stres nervozna nesigurnost" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajPet">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
-								<h3 id="rucnaPorukaNaslov">Otvori kad Puki otključa</h3>
+								<h3>Otvori kad ti je najteže</h3>
 								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint" id="rucnaPorukaHint"><span class="poruka-emodzi" aria-hidden="true">🔒</span> Nemož da vidiš još sačkaj malo.
-								Puki će je otključati kad bude vreme (kad stigne)..</span>
-							<div class="poruka-sadrzaj" id="sadrzajRucnePoruke">
-								<p id="rucnaPorukaTekst">Nema poruke još.</p>
-								<img class="slika-poruke" src="images/grl.webp" alt="Puki i ti dok se grlite" />
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">💌</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajPet">
+								<p>
+									Lavv znam da ti je ponekad teško kad ti se nakupi sve, i problemi i obaveze i nemanje pukija, i da se osećaš kao da sama prolaziš kroz to.<br />
+									Kad ti se to desi, otvori ovu poruku i seti se da nisi sama u tome. Ja sam ovde, iako nisam pored tebe.<br />
+									Ti si moja najvažnija stvar, i to se ne menja ni kad je lako ni kad je teško u životu.
+								</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.21 (1).jpeg" alt="Puki i ti zajedno" />
 							</div>
 						</section>
+
+						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="umorna" role="button" tabindex="0" aria-expanded="false">
+							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<div class="poruka-zaglavlje">
+								<h3>Puki je zaključao ovu poruku</h3>
+								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+						</section>
+
+						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="tužna" role="button" tabindex="0" aria-expanded="false">
+							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<div class="poruka-zaglavlje">
+								<h3>Puki je zaključao ovu poruku</h3>
+								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+						</section>
+
+						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="sama" role="button" tabindex="0" aria-expanded="false">
+							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<div class="poruka-zaglavlje">
+								<h3>Puki je zaključao ovu poruku</h3>
+								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+						</section>
+
+						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="sreća" role="button" tabindex="0" aria-expanded="false">
+							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<div class="poruka-zaglavlje">
+								<h3>Puki je zaključao ovu poruku</h3>
+								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+						</section>
+
+						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="mir" role="button" tabindex="0" aria-expanded="false">
+							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+							<div class="poruka-zaglavlje">
+								<h3>Puki je zaključao ovu poruku</h3>
+								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+						</section>
+
 					</div>
 				</article>
 			</div>
@@ -305,23 +499,14 @@
 		<script src="assets/js/main.js"></script>
 		<script>
 			(function () {
+					var KARTICE = Array.prototype.slice.call(document.querySelectorAll('.poruka-kartica'));
+					var TRENUTNA_EMOCIJA = '';
+
 				var povratakU = new Date('2026-10-31T23:00:00+01:00');
 				var odbrojavanjeSatiEl = document.getElementById('odbrojavanjeSati');
 				var odbrojavanjeOpisEl = document.getElementById('odbrojavanjeOpis');
 
 				
-				var RUCNA_PORUKA = {
-					otkljucana: true,
-					naslov: 'Otvori kad ti je najteže',
-					tekst: 'Kad ti bude bilo najteže, kad ti se sve skupi i kad ti se učini da je ovo predugo, otvori ovu poruku. Nikad nisi bila sama u tome, i nikad ne moraš da ostaneš sama u tome. Ovaj deo razdvojenosti ne menja ono što jeste. Ja znam da ti značiš više od svega što mogu da opišem. Nema ni jedne realnosti u kojoj te nisam video, i nema ni jedne razdaljine koja može da stvori prostor između nas koji ne postoji. Ja sam tu, i to je najvažnije.'
-				};
-
-				var rucnaPorukaOznakaEl = document.getElementById('rucnaPorukaOznaka');
-				var rucnaPorukaNaslovEl = document.getElementById('rucnaPorukaNaslov');
-				var rucnaPorukaTekstEl = document.getElementById('rucnaPorukaTekst');
-				var rucnaPorukaKarticaEl = document.getElementById('rucnaPorukaKartica');
-				var rucnaPorukaHintEl = document.getElementById('rucnaPorukaHint');
-
 				function dopuniNulom(vrednost) {
 					return String(vrednost).padStart(2, '0');
 				}
@@ -347,31 +532,40 @@
 					odbrojavanjeOpisEl.textContent = 'Povratak planiran 31. oktobra predveče (okvirno 23:00).';
 				}
 
-				function prikaziRucnuPoruku() {
-					if (!rucnaPorukaOznakaEl || !rucnaPorukaNaslovEl || !rucnaPorukaTekstEl)
-						return;
-
-					if (RUCNA_PORUKA.otkljucana) {
-						rucnaPorukaOznakaEl.classList.remove('zakljucano');
-						rucnaPorukaOznakaEl.classList.add('otkljucano');
-						rucnaPorukaOznakaEl.innerHTML = '<span class="icon solid fa-envelope-open-text"></span> Otkljucano';
-						rucnaPorukaNaslovEl.textContent = RUCNA_PORUKA.naslov || 'Nova poruka od Pukija';
-						rucnaPorukaTekstEl.textContent = RUCNA_PORUKA.tekst || 'Čekaj nisam stigo da napišemmm.';
-						if (rucnaPorukaKarticaEl)
-							rucnaPorukaKarticaEl.setAttribute('data-zakljucana', 'ne');
-						if (rucnaPorukaHintEl)
-							rucnaPorukaHintEl.innerHTML = '<span class="poruka-emodzi" aria-hidden="true">✨</span> Klikni karticu da otvoriš poruku.';
+					function normalizujTekst(vrednost) {
+						return String(vrednost || '')
+							.toLowerCase()
+							.normalize('NFD')
+							.replace(/[\u0300-\u036f]/g, '')
+							.replace(/[^a-z0-9\s]/g, ' ')
+							.replace(/\s+/g, ' ')
+							.trim();
 					}
-				}
+
+					function filtrirajKartice() {
+						var brojPrikazanihKartica = 0;
+
+						for (var i = 0; i < KARTICE.length; i++) {
+							var kartica = KARTICE[i];
+							var emocijeKartice = kartica.getAttribute('data-emocije') || '';
+							var ukljuci = true;
+
+							if (TRENUTNA_EMOCIJA) {
+								ukljuci = emocijeKartice.split(',').map(normalizujTekst).indexOf(TRENUTNA_EMOCIJA) !== -1;
+							}
+
+							kartica.style.display = ukljuci ? '' : 'none';
+							if (ukljuci)
+								brojPrikazanihKartica++;
+						}
+
+					}
 
 				function promeniOtvorenostKartice(karticaEl) {
-					var jeZakljucana = karticaEl.getAttribute('data-zakljucana') === 'da';
-					if (jeZakljucana) {
-						karticaEl.classList.remove('zakljucano-tresenje');
+					if (karticaEl.getAttribute('data-zakljucana') === 'da') {
+						karticaEl.classList.remove('zakljucana-tresenje');
 						void karticaEl.offsetWidth;
-						karticaEl.classList.add('zakljucano-tresenje');
-						if (rucnaPorukaHintEl)
-							rucnaPorukaHintEl.innerHTML = '<span class="poruka-emodzi" aria-hidden="true">🔐</span> Još malo strpljenja, Puki će otključati kada dođe trenutak.';
+						karticaEl.classList.add('zakljucana-tresenje');
 						return;
 					}
 
@@ -395,8 +589,19 @@
 					}
 				}
 
-				prikaziRucnuPoruku();
+					document.querySelectorAll('.pretraga-tag').forEach(function (tagDugme) {
+						tagDugme.addEventListener('click', function () {
+							var tag = this.getAttribute('data-tag');
+							TRENUTNA_EMOCIJA = TRENUTNA_EMOCIJA === normalizujTekst(tag) ? '' : normalizujTekst(tag);
+							document.querySelectorAll('.pretraga-tag').forEach(function (drugiTag) {
+								drugiTag.classList.toggle('izabrano', drugiTag === tagDugme && TRENUTNA_EMOCIJA !== '');
+							});
+							filtrirajKartice();
+						});
+					});
+
 				poveziKarticeNaKlik();
+					filtrirajKartice();
 				azurirajOdbrojavanje();
 				window.setInterval(azurirajOdbrojavanje, 1000);
 			})();
