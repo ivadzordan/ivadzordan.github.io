@@ -151,22 +151,6 @@
 				box-shadow: 0 8px 18px rgba(240, 98, 146, 0.22);
 			}
 
-			.brod-kartica.zakljucana {
-				border-color: rgba(255, 216, 138, 0.38);
-			}
-
-			.brod-kartica.zakljucana-tresenje {
-				animation: tresni 360ms ease;
-			}
-
-			@keyframes tresni {
-				0% { transform: translateX(0); }
-				25% { transform: translateX(-5px); }
-				50% { transform: translateX(5px); }
-				75% { transform: translateX(-3px); }
-				100% { transform: translateX(0); }
-			}
-
 			.pretraga-odgovor {
 				display: none;
 				margin-top: 0.9rem;
@@ -436,49 +420,89 @@
 							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="umorna" role="button" tabindex="0" aria-expanded="false">
-							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" id="karticaDevetMeseci" data-emocije="devet meseci" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajDevetMeseci">
+							<p class="brod-oznaka"><span class="icon solid fa-heart"></span> 9 meseci</p>
 							<div class="poruka-zaglavlje">
-								<h3>Puki je zaključao ovu poruku</h3>
-								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+								<h3>Otvori kad slavimo 9 meseci</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🎉</span> Posebna poruka za naš mali datum.</span>
+							<div class="poruka-sadrzaj" id="sadrzajDevetMeseci">
+								<p>
+									Danas nam je devet meseci lav. Hvala ti za sve naše razgovore, grlove, gluposti i trenutke koje pamtim samo zato što su naši.<br />
+									Nije svaki dan bio savršen, ali je svaki bio deo nečega što mi mnogo znači. Volim te i jedva čekam da te vidim.<br />
+									Srećnih nam devet meseci. 🟪
+								</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.23.jpeg" alt="Puki i ti dok slavite devet meseci" />
+							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="tužna" role="button" tabindex="0" aria-expanded="false">
-							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" data-emocije="umorna" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajUmorna">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
-								<h3>Puki je zaključao ovu poruku</h3>
-								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+								<h3>Otvori kad si umorna</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">😴</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajUmorna">
+								<p>
+									Ne moraš danas sve da stigneš. Odmori malo, udahni i seti se da će ispitnih rokova biti uvek.<br />
+									Sve će proći vremenom, ne moraš sve sama, puki je uvek tu za tebe. Volim te!
+								</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.21 (2).jpeg" alt="Puki i ti zajedno" />
+							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="sama" role="button" tabindex="0" aria-expanded="false">
-							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" data-emocije="tužna" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajTuzna">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
-								<h3>Puki je zaključao ovu poruku</h3>
-								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+								<h3>Otvori kad si tužna</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🌧️</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajTuzna">
+								<p>Ne moraš da budeš dobro ovog trenutka. Voleo bih da mogu da te grl i maz i ljub, ali dok ne mogu, samo znaj da mislim na tebe i da će ovo proći. Tu sam za tebe.</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.23 (1).jpeg" alt="Puki i ti zajedno" />
+							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="sreća" role="button" tabindex="0" aria-expanded="false">
-							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" data-emocije="sama" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajSama">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
-								<h3>Puki je zaključao ovu poruku</h3>
-								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+								<h3>Otvori kad ti treba da znaš da sam tu</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🫂</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajSama">
+								<p>Bez obzira na to koliko smo daleko, nisi sama. Seti se da uvek imaš medu koji stalno misli na tebe, i koji će uvek biti tu za tebe.</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.22.jpeg" alt="Puki i ti u zajedničkom trenutku" />
+							</div>
 						</section>
 
-						<section class="brod-kartica poruka-kartica zakljucana" data-zakljucana="da" data-emocije="mir" role="button" tabindex="0" aria-expanded="false">
-							<p class="brod-oznaka"><span class="icon solid fa-lock"></span> Zaključano</p>
+						<section class="brod-kartica poruka-kartica" data-emocije="sreća" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajSreca">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
 							<div class="poruka-zaglavlje">
-								<h3>Puki je zaključao ovu poruku</h3>
-								<span class="poruka-strelica" aria-hidden="true">🔒</span>
+								<h3>Otvori kad si srećna</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
 							</div>
-							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🔐</span> Ova poruka još čeka svoj trenutak.</span>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">☀️</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajSreca">
+								<p> Vojim kad si srećna, čak i kada nisam tu da to vidim uživo. Zapamti kako se sad osećaš i čuvaj to dok se ne vratim!</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.23.jpeg" alt="Puki i ti nasmejani" />
+							</div>
+						</section>
+
+						<section class="brod-kartica poruka-kartica" data-emocije="mir" role="button" tabindex="0" aria-expanded="false" aria-controls="sadrzajMir">
+							<p class="brod-oznaka"><span class="icon solid fa-envelope-open-text"></span> Poruka</p>
+							<div class="poruka-zaglavlje">
+								<h3>Otvori kad ti treba mir</h3>
+								<span class="poruka-strelica" aria-hidden="true">▼</span>
+							</div>
+							<span class="poruka-hint"><span class="poruka-emodzi" aria-hidden="true">🫧</span> Klikni karticu da otvoriš poruku.</span>
+							<div class="poruka-sadrzaj" id="sadrzajMir">
+								<p>Skloni se na minut od svega i udahni. Ne moraš sve da rešiš sada. Zamisli da sam pored tebe i da smo ušuškani i da se mazimo. Vojim te i tu sam.</p>
+								<img class="slika-poruke" src="images/WhatsApp Image 2026-08-28 at 14.34.25.jpeg" alt="Puki i ti u mirnom trenutku" />
+							</div>
 						</section>
 
 					</div>
@@ -562,13 +586,6 @@
 					}
 
 				function promeniOtvorenostKartice(karticaEl) {
-					if (karticaEl.getAttribute('data-zakljucana') === 'da') {
-						karticaEl.classList.remove('zakljucana-tresenje');
-						void karticaEl.offsetWidth;
-						karticaEl.classList.add('zakljucana-tresenje');
-						return;
-					}
-
 					var sadaOtvorena = karticaEl.classList.toggle('otvorena');
 					karticaEl.setAttribute('aria-expanded', sadaOtvorena ? 'true' : 'false');
 				}
