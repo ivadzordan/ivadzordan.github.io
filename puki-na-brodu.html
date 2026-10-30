@@ -600,9 +600,10 @@
 					var KARTICE = Array.prototype.slice.call(document.querySelectorAll('.poruka-kartica'));
 					var TRENUTNA_EMOCIJA = '';
 
-				var povratakU = new Date('2026-10-31T23:00:00+01:00');
+				var povratakU = new Date('2026-10-31T23:25:00+01:00');
 				var odbrojavanjeSatiEl = document.getElementById('odbrojavanjeSati');
 				var odbrojavanjeOpisEl = document.getElementById('odbrojavanjeOpis');
+				var letoviOkvirEl = document.querySelector('.letovi-okvir');
 
 				
 				function dopuniNulom(vrednost) {
@@ -616,8 +617,12 @@
 					var razlikaMs = povratakU.getTime() - Date.now();
 
 					if (razlikaMs <= 0) {
-						odbrojavanjeSatiEl.textContent = 'Do Pukija: 0h 00m 00s';
+						odbrojavanjeSatiEl.textContent = 'STIGO PUKI';
 						odbrojavanjeOpisEl.textContent = '';
+						if (letoviOkvirEl) {
+							letoviOkvirEl.remove();
+							letoviOkvirEl = null;
+						}
 						return;
 					}
 
@@ -627,7 +632,7 @@
 					var sekunde = ukupnoSekundi % 60;
 
 					odbrojavanjeSatiEl.textContent = 'Do Pukija: ' + ukupnoSati + 'h ' + dopuniNulom(minuti) + 'm ' + dopuniNulom(sekunde) + 's';
-					odbrojavanjeOpisEl.textContent = 'Povratak planiran 31. oktobra predveče (okvirno 23:00).';
+					odbrojavanjeOpisEl.textContent = 'Povratak planiran 31. oktobra oko 23:25.';
 				}
 
 					function normalizujTekst(vrednost) {
