@@ -303,6 +303,21 @@
 				word-break: break-word;
 			}
 
+			#header .content .inner .brod-odbrojavanje.stigao-puki {
+				margin-top: 1.1rem;
+				font-size: 2.2rem;
+				letter-spacing: 0;
+				color: var(--boja-2);
+				text-shadow: 0 4px 24px rgba(255, 213, 79, 0.38);
+				animation: dolazak-puki 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+			}
+
+			@keyframes dolazak-puki {
+				0% { opacity: 0; transform: translateY(8px) scale(0.94); }
+				70% { opacity: 1; transform: translateY(0) scale(1.03); }
+				100% { opacity: 1; transform: scale(1); }
+			}
+
 			.brod-podtekst {
 				opacity: 0.84;
 				margin-top: 0.35rem;
@@ -387,6 +402,10 @@
 					font-size: 1.2rem;
 				}
 
+				#header .content .inner .brod-odbrojavanje.stigao-puki {
+					font-size: 1.65rem;
+				}
+
 				.ukras-slika {
 					width: 42px;
 					height: 42px;
@@ -407,8 +426,8 @@
 				</div>
 				<div class="content">
 					<div class="inner">
-						<h1>Puki je na brodu.</h1>
-						<p>Otišo da pere ruke i gasi požare.</p>
+						<h1 id="naslovPovratka">Puki je na brodu.</h1>
+						<p id="podnaslovPovratka">Otišo da pere ruke i gasi požare.</p>
 						<div class="puki-glavna-slika-okvir">
 							<img class="puki-glavna-slika" src="images/puki.webp" alt="Puki na početnoj" />
 						</div>
@@ -604,6 +623,8 @@
 				var odbrojavanjeSatiEl = document.getElementById('odbrojavanjeSati');
 				var odbrojavanjeOpisEl = document.getElementById('odbrojavanjeOpis');
 				var letoviOkvirEl = document.querySelector('.letovi-okvir');
+				var naslovPovratkaEl = document.getElementById('naslovPovratka');
+				var podnaslovPovratkaEl = document.getElementById('podnaslovPovratka');
 
 				
 				function dopuniNulom(vrednost) {
@@ -618,7 +639,12 @@
 
 					if (razlikaMs <= 0) {
 						odbrojavanjeSatiEl.textContent = 'STIGO PUKI';
+						odbrojavanjeSatiEl.classList.add('stigao-puki');
 						odbrojavanjeOpisEl.textContent = '';
+						if (naslovPovratkaEl)
+							naslovPovratkaEl.textContent = 'Puki je kod Ive.';
+						if (podnaslovPovratkaEl)
+							podnaslovPovratkaEl.textContent = 'Otišo na grl i ljub i maz.';
 						if (letoviOkvirEl) {
 							letoviOkvirEl.remove();
 							letoviOkvirEl = null;
